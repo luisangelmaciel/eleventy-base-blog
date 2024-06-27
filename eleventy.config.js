@@ -10,7 +10,10 @@ const searchPlugin = require("eleventy-plugin-search");
 
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
-
+module.exports = function(eleventyConfig) {
+	eleventyConfig.addPlugin(searchPlugin);
+	// ... resto de tu configuración
+  };
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder

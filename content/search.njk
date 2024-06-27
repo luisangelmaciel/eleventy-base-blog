@@ -22,7 +22,7 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
     var article = document.createElement('article');
     article.innerHTML = `
       <h2><a href="${result.url}">${result.title}</a></h2>
-      <time datetime="${result.date}">${new Date(result.date).toLocaleDateString('es-ES')}</time>
+      <time datetime="${result.date}">${new Date(result.date).toLocaleDateString('es-MX')}</time>
       <p>${result.description || ''}</p>
     `;
     resultsContainer.appendChild(article);
