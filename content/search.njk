@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Buscar
+  order: 4
+---
+<h1>Búsqueda</h1>
+<form id="search-form">
+  <input type="search" id="search-input" placeholder="Buscar en el blog...">
+  <button type="submit">Buscar</button>
+</form>
+<div id="search-results"></div>
+
+<script>
+document.getElementById('search-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var query = document.getElementById('search-input').value;
+  var results = searchIndex.search(query);
+  var resultsContainer = document.getElementById('search-results');
+  resultsContainer.innerHTML = '';
+  results.forEach(function(result) {
+    var article = document.createElement('article');
+    article.innerHTML = `
+      <h2><a href="${result.url}">${result.title}</a></h2>
+      <time datetime="${result.date}">${new Date(result.date).toLocaleDateString('es-ES')}</time>
+      <p>${result.description || ''}</p>
+    `;
+    resultsContainer.appendChild(article);
+  });
+});
+</script>

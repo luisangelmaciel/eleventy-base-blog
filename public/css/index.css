@@ -268,3 +268,24 @@ a[href].header-anchor:focus,
 h2 + .header-anchor {
 	font-size: 1.5em;
 }
+
+.post-link.read {
+	color: #888;
+  }
+  .post-link.read::after {
+	content: " (Leído)";
+	font-size: 0.8em;
+  }
+
+  img {
+	width: 100%;
+	height: 100%; /* Altura fija 300px*/
+	object-fit: cover; /* Cubre todo el contenedor, recortando si es necesario */
+  }
+  
+  /* Para pantallas pequeñas */
+  @media (max-width: 768px) {
+	img {
+	  width: 90%; /* Reducir el ancho en pantallas pequeñas */
+	}
+  }

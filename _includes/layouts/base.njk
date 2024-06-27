@@ -57,5 +57,26 @@
 		<footer></footer>
 
 		<!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
+		<script>
+			function markAsRead(postId) {
+			  let readPosts = JSON.parse(localStorage.getItem('readPosts') || '[]');
+			  if (!readPosts.includes(postId)) {
+				readPosts.push(postId);
+				localStorage.setItem('readPosts', JSON.stringify(readPosts));
+			  }
+			  updateReadStatus();
+			}
+			
+			function updateReadStatus() {
+			  let readPosts = JSON.parse(localStorage.getItem('readPosts') || '[]');
+			  document.querySelectorAll('.post-link').forEach(link => {
+				if (readPosts.includes(link.dataset.postId)) {
+				  link.classList.add('read');
+				}
+			  });
+			}
+			
+			document.addEventListener('DOMContentLoaded', updateReadStatus);
+		</script>
 	</body>
 </html>
